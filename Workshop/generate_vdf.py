@@ -21,13 +21,22 @@ def vdf_escape_line(s):
     return s.replace('\\', '\\\\').replace('"', '\\"').replace('\r', '').replace('\n', ' ')
 
 
+# previewfile is optional: steamcmd fails with "File Not Found" if the path is set but the file is
+# missing, so only emit the line when PreviewImage.png actually exists.
+preview_path = os.path.join(workspace, 'Workshop', 'PreviewImage.png')
+preview_line = ''
+if os.path.isfile(preview_path):
+    preview_line = '\t"previewfile"\t\t"' + workspace + '/Workshop/PreviewImage.png"\n'
+else:
+    print("NOTE: " + preview_path + " not found, publishing without a preview image.")
+
 vdf = (
     '"workshopitem"\n'
     '{\n'
     '\t"appid"\t\t\t"255710"\n'
     '\t"publishedfileid"\t"' + item_id + '"\n'
     '\t"contentfolder"\t\t"' + workspace + '/dist/TakeAWalk"\n'
-    '\t"previewfile"\t\t"' + workspace + '/Workshop/PreviewImage.png"\n'
+    + preview_line +
     '\t"description"\t\t"' + description + '"\n'
     '\t"changenote"\t\t"' + vdf_escape_line(note)[:7900] + '"\n'
     '}\n'

@@ -57,14 +57,32 @@ fi
 
 mkdir -p "$WORKSHOP_DIR"
 
+# previewfile is optional: steamcmd fails with "File Not Found" if the path is set but the file is
+# missing, so only emit the line when PreviewImage.png actually exists.
+PREVIEW="$WORKSHOP_DIR/PreviewImage.png"
+PREVIEW_LINE=""
+if [[ -f "$PREVIEW" ]]; then
+    PREVIEW_LINE="    \"previewfile\"     \"$PREVIEW\""
+else
+    echo "NOTE: $PREVIEW not found, publishing without a preview image (set one later in the Workshop)."
+fi
+
+# visibility: only force it when CREATING a new item (id 0), and create it hidden so a half-finished
+# first publish never goes live by accident. On updates (id set) the line is omitted, preserving
+# whatever visibility you chose in the Workshop. 0=public, 1=friends, 2=hidden, 3=unlisted.
+VISIBILITY_LINE=""
+if [[ "$ITEM_ID" == "0" ]]; then
+    VISIBILITY_LINE="    \"visibility\"      \"2\""
+fi
+
 cat > "$VDF" <<EOF
 "workshopitem"
 {
     "appid"           "$APP_ID"
     "publishedfileid" "$ITEM_ID"
     "contentfolder"   "$DIST"
-    "previewfile"     "$WORKSHOP_DIR/PreviewImage.png"
-    "visibility"      "0"
+$PREVIEW_LINE
+$VISIBILITY_LINE
     "title"           "Take a Walk"
     "changenote"      "$CHANGE_NOTE"
 }

@@ -1,10 +1,10 @@
 "workshopitem"
 {
-	"appid"		"255710"
-	"publishedfileid"		""
-	"contentfolder"		"/home/roberto/Documentos/Projects/TakeAWalk/dist/TakeAWalk"
-	"previewfile"		"/home/roberto/Documentos/Projects/TakeAWalk/Workshop/PreviewImage.png"
-	"visibility"		"0"
-	"title"		"Take a Walk"
-	"changenote"		"Initial release"
+    "appid"           "255710"
+    "publishedfileid" "3745075350"
+    "contentfolder"   "/home/roberto/Documentos/Projects/TakeAWalk/dist/TakeAWalk"
+
+
+    "title"           "Take a Walk"
+    "changenote"      "Initial release"
 }

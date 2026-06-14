@@ -1,0 +1,137 @@
+name: Deploy to Steam Workshop
+
+# Triggers on v* tag (from Release Please) or manually.
+# Builds the mod from source in CI. GameReferences/ and packages/ live in this repo.
+#
+# Required secrets (environment: PRO):
+#   STEAM_CONFIG_VDF   — base64-encoded ~/.steam/steamcmd/config/config.vdf
+#   STEAM_USERNAME     — Steam username
+#   WORKSHOP_ITEM_ID   — Workshop item ID (set after first publish via publish.sh)
+#   RELEASE_PLEASE_TOKEN — PAT with repo scope (so tag push triggers this workflow)
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      changeNote:
+        description: 'Override change note (leave blank to extract from CHANGELOG.md)'
+        required: false
+        default: ''
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: PRO
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Mono
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mono-complete mono-xbuild
+
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore packages.config -PackagesDirectory packages
+
+      - name: Inject version into AssemblyInfo.cs
+        run: |
+          TAG="${{ github.ref_name }}"
+          VERSION="${TAG#v}"
+          if [[ -z "$VERSION" || "$VERSION" == "$TAG" ]]; then
+            VERSION=$(python3 -c "import json; print(json.load(open('.release-please-manifest.json'))['.'])")
+          fi
+          echo "Building version: $VERSION"
+          sed -i "s/\[assembly: AssemblyVersion(\"[^\"]*\")\]/[assembly: AssemblyVersion(\"$VERSION.0\")]/" Properties/AssemblyInfo.cs
+
+      - name: Build
+        run: xbuild TakeAWalk.csproj /p:Configuration=Release /nologo /verbosity:quiet
+
+      - name: Stage dist/
+        run: |
+          mkdir -p dist/TakeAWalk
+          cp bin/Release/TakeAWalk.dll dist/TakeAWalk/TakeAWalk.dll
+          # Locale/*.txt are loaded at runtime from the mod folder (see LocalizationManager);
+          # they must ship next to the DLL or the UI falls back to raw keys.
+          if [ -d bin/Release/Locale ]; then
+            cp -r bin/Release/Locale dist/TakeAWalk/Locale
+          else
+            cp -r Locale dist/TakeAWalk/Locale
+          fi
+          echo "dist/ contents:"
+          ls -lhR dist/TakeAWalk/
+
+      - name: Build change note from CHANGELOG.md
+        id: note
+        run: |
+          MANUAL_NOTE="${{ github.event.inputs.changeNote }}"
+          if [[ -n "$MANUAL_NOTE" ]]; then
+            echo "value=$MANUAL_NOTE" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          TAG="${{ github.ref_name }}"
+          VERSION="${TAG#v}"
+          if [[ -z "$VERSION" || "$VERSION" == "$TAG" ]]; then
+            VERSION=$(python3 -c "import json; print(json.load(open('.release-please-manifest.json'))['.'])")
+          fi
+
+          SECTION=$(awk \
+            "/^## \[$VERSION\]/{found=1; next} \
+             found && /^## \[/{exit} \
+             found{print}" \
+            CHANGELOG.md \
+            | sed '/^[[:space:]]*$/d')
+
+          BBCODE=$(echo "$SECTION" | python3 Workshop/md_to_bbcode.py)
+          RELEASE_URL="https://github.com/${{ github.repository }}/releases/tag/v${VERSION}"
+
+          if [[ -n "$BBCODE" ]]; then
+            NOTE=$(printf '%s\n\n[url=%s]Full release notes on GitHub[/url]' "$BBCODE" "$RELEASE_URL")
+          else
+            NOTE="Release ${VERSION} - [url=${RELEASE_URL}]${RELEASE_URL}[/url]"
+          fi
+
+          NOTE="${NOTE:0:8000}"
+          {
+            echo "value<<__EOF__"
+            echo "$NOTE"
+            echo "__EOF__"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Install steamcmd
+        run: |
+          mkdir -p "$HOME/steamcmd"
+          curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" \
+            | tar -xz -C "$HOME/steamcmd"
+          "$HOME/steamcmd/steamcmd.sh" +quit || true
+          echo "$HOME/steamcmd" >> "$GITHUB_PATH"
+
+      - name: Install Steam session
+        env:
+          STEAM_CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+        run: |
+          STEAMROOT="$HOME/Steam"
+          mkdir -p "$STEAMROOT/config"
+          echo "$STEAM_CONFIG_VDF" | base64 -d > "$STEAMROOT/config/config.vdf"
+          mkdir -p "$HOME/.steam"
+          ln -sfn "$STEAMROOT" "$HOME/.steam/steam"
+          ln -sfn "$STEAMROOT" "$HOME/.steam/root"
+
+      - name: Deploy to Steam Workshop
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          WORKSHOP_ITEM_ID: ${{ secrets.WORKSHOP_ITEM_ID }}
+          CHANGE_NOTE: ${{ steps.note.outputs.value }}
+        run: |
+          python3 Workshop/generate_vdf.py
+          steamcmd.sh \
+            +login "$STEAM_USERNAME" \
+            +workshop_build_item /tmp/item.vdf \
+            +quit

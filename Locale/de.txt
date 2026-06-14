@@ -1,0 +1,58 @@
+MOD_DESCRIPTION Malerische, ruhige und wenig verschmutzte Fußwege erhalten einen kleinen parkähnlichen Freizeitwert und locken Bürger zu einem Spaziergang. Sehenswürdigkeiten sind Bäume, Requisiten und nahe Wahrzeichen.
+SETTINGS_GROUP_GENERAL Allgemein
+SETTINGS_ENABLE Mod aktivieren
+SETTINGS_ENABLE_TIP Schaltet den gesamten Mod ein oder aus, ohne ihn zu entfernen.
+SETTINGS_GROUP_ELIGIBILITY Wann ein Weg malerisch ist
+SETTINGS_POLLUTION_THRESHOLD Maximale Bodenverschmutzung
+SETTINGS_POLLUTION_THRESHOLD_TIP Wege in Gebieten mit mehr Bodenverschmutzung als dieser Wert (0-255) geben keinen Bonus. Niedriger = strenger, nur die saubersten Gebiete zählen.
+SETTINGS_WATER_POLLUTION_THRESHOLD Maximale Wasserverschmutzung
+SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Wege an Wasser, das schmutziger ist als dies (0-255), geben keinen Bonus. Trockene Wege im Landesinneren sind nicht betroffen. Niedriger = strenger, nur saubere Ufer zählen.
+SETTINGS_WATER_POLLUTION_PENALTY Strafe für Wasserverschmutzung
+SETTINGS_WATER_POLLUTION_PENALTY_TIP Wie stark nahes verschmutztes Wasser (unter dem obigen Grenzwert) den malerischen Wert eines Weges mindert. Höher = ein schmutziges Ufer wird stärker bestraft.
+SETTINGS_NOISE_SENSITIVITY Lärmstrafe
+SETTINGS_NOISE_SENSITIVITY_TIP Wie stark lokaler Lärm den malerischen Wert eines Weges mindert. Höher = laute Wege werden stärker bestraft.
+SETTINGS_LANDMARK_FORGIVENESS Wahrzeichen-Nachsicht
+SETTINGS_LANDMARK_FORGIVENESS_TIP Ein nahes Wahrzeichen hebt diesen Anteil der Lärmstrafe auf, denn neben einem berühmten Denkmal stört der Lärm nicht.
+SETTINGS_GROUP_POI Sehenswürdigkeiten
+SETTINGS_FEATURE_RADIUS Suchradius
+SETTINGS_FEATURE_RADIUS_TIP Wie weit (Meter) um einen Weg nach Bäumen, Requisiten und Wahrzeichen gesucht wird.
+SETTINGS_TREE_WEIGHT Wert pro Baum
+SETTINGS_TREE_WEIGHT_TIP Wie viel jeder nahe Baum zum malerischen Wert eines Weges beiträgt.
+SETTINGS_PROP_WEIGHT Wert pro Requisit
+SETTINGS_PROP_WEIGHT_TIP Wie viel jedes nahe Requisit (Bank, Laterne, Statue...) zum malerischen Wert eines Weges beiträgt.
+SETTINGS_LANDMARK_BONUS Wahrzeichen-Bonus
+SETTINGS_LANDMARK_BONUS_TIP Fester Bonus, wenn ein Park oder einzigartiges Gebäude in der Nähe ist.
+SETTINGS_GROUP_SCORING Freizeitwert
+SETTINGS_SMALL_PARK_RATE Wert eines kleinen Parks
+SETTINGS_SMALL_PARK_RATE_TIP Freizeit, die ein Weg mit Basislänge gibt, auf einen kleinen Park abgestimmt. Länge und Ausstattung steigern den Wert ab hier.
+SETTINGS_LENGTH_FULL Länge für vollen Wert
+SETTINGS_LENGTH_FULL_TIP Zusammenhängende Weglänge (Meter), die den vollen Wert eines kleinen Parks erreicht. Längere Wege sind mehr wert, bis zur Obergrenze.
+SETTINGS_MAX_MULT Maximalwert
+SETTINGS_MAX_MULT_TIP Obergrenze für den Freizeitwert eines Weges, als Vielfaches eines kleinen Parks. Sehr lange, malerische Wege können sie nicht überschreiten.
+SETTINGS_DECORATION_FULL Ausstattung für Parkwert
+SETTINGS_DECORATION_FULL_TIP Wie viel nahe Ausstattung (Bäume, Requisiten, ein Wahrzeichen) einen Weg allein einen ganzen kleinen Park wert macht. Niedriger = Bäume und Requisiten zählen mehr, du kannst so einen "Park" entlang eines Weges bauen.
+SETTINGS_INJECT_RADIUS Streuradius
+SETTINGS_INJECT_RADIUS_TIP Wie weit (Meter) ein Wegpunkt seinen Freizeitwert in die Umgebung verteilt.
+SETTINGS_INJECT_SIGHTSEEING Tourismuswert hinzufügen
+SETTINGS_INJECT_SIGHTSEEING_TIP Fügt auch etwas Sightseeing-/Tourwert hinzu, sodass malerische Wege dem Tourismus leicht helfen.
+SETTINGS_HEALTH_SHARE Gesundheitsbonus
+SETTINGS_HEALTH_SHARE_TIP Spazieren ist gesund: fügt einen kleinen lokalen Gesundheitsbonus hinzu, als Anteil des Freizeitwerts des Weges. 0 schaltet ihn aus.
+SETTINGS_APPEAL_SHARE Anziehung für Besucher
+SETTINGS_APPEAL_SHARE_TIP Fügt am Start jedes Spaziergangs Attraktivität (Tourismusreiz) hinzu und zieht Besucher und Touristen an, die dann den Spaziergang machen. Wird als Stärke von 0-50 angezeigt; etwa 10 ist ein normaler Reiz, 50 ist stark. 0 schaltet es aus.
+SETTINGS_GROUP_VISITS Bürger spazieren auf den Wegen (Parklife)
+SETTINGS_ENABLE_TOURS Spaziergänge auf malerischen Wegen
+SETTINGS_ENABLE_TOURS_TIP Erstellt Spaziergänge entlang malerischer Wege, damit Bürger sie zur Erholung entlangschlendern. Erfordert das Parklife-DLC. Die Spaziergänge werden nicht gespeichert und sauber entfernt, wenn du den Mod deaktivierst.
+SETTINGS_TOUR_MIN_LENGTH Mindestlänge des Weges
+SETTINGS_TOUR_MIN_LENGTH_TIP Ein Weg muss mindestens so lang sein (Meter), um einen Spaziergang zu erhalten; ein kurzes Stück ist keinen Spaziergang wert.
+SETTINGS_MAX_TOURS Maximale Spaziergänge
+SETTINGS_MAX_TOURS_TIP Höchstzahl gleichzeitig aktiver Spaziergangslinien. Jede belegt einen der Transportlinien-Plätze des Spiels; verringere ihn bei sehr vielen Wegen.
+SETTINGS_TOUR_BUDGET Spaziergang-Häufigkeit
+SETTINGS_TOUR_BUDGET_TIP Budget pro Spaziergangslinie. Höher = das Spiel führt mehr Gruppen aus, also sind mehr Bürger auf den Wegen unterwegs.
+SETTINGS_GROUP_PERFORMANCE Leistung
+SETTINGS_SEGMENTS_PER_TICK Wege pro Tick geprüft
+SETTINGS_SEGMENTS_PER_TICK_TIP Wie viele Wegsegmente pro Simulations-Tick ausgewertet werden. Niedriger = weniger CPU-Last, langsamere Aktualisierung.
+SETTINGS_MAX_PATH_SEGMENTS Max. Längenmessung
+SETTINGS_MAX_PATH_SEGMENTS_TIP Wie viele verbundene Segmente beim Messen der Weglänge verfolgt werden. Niedriger = weniger CPU-Last.
+SETTINGS_GROUP_DEBUG Debugging
+SETTINGS_DEBUG_LOGGING Debug-Protokollierung aktivieren
+SETTINGS_DEBUG_LOGGING_TIP Schreibt zusätzliche Diagnosemeldungen in das Spielprotokoll.

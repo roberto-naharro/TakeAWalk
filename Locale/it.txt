@@ -1,0 +1,58 @@
+MOD_DESCRIPTION I sentieri pedonali pittoreschi, tranquilli e poco inquinati guadagnano un piccolo valore ricreativo simile a quello di un parco e invogliano i cittadini a uscire per una passeggiata. I punti di interesse sono alberi, oggetti e monumenti vicini.
+SETTINGS_GROUP_GENERAL Generale
+SETTINGS_ENABLE Attiva la mod
+SETTINGS_ENABLE_TIP Attiva o disattiva l'intera mod senza rimuoverla.
+SETTINGS_GROUP_ELIGIBILITY Quando un sentiero è pittoresco
+SETTINGS_POLLUTION_THRESHOLD Inquinamento del suolo massimo
+SETTINGS_POLLUTION_THRESHOLD_TIP I sentieri in aree con più inquinamento del suolo di questo valore (0-255) non danno bonus. Più basso = più severo, contano solo le aree più pulite.
+SETTINGS_WATER_POLLUTION_THRESHOLD Inquinamento dell'acqua massimo
+SETTINGS_WATER_POLLUTION_THRESHOLD_TIP I sentieri lungo acqua più sporca di così (0-255) non danno bonus. I sentieri asciutti nell'entroterra non sono influenzati. Più basso = più severo, contano solo le rive pulite.
+SETTINGS_WATER_POLLUTION_PENALTY Penalità per acqua inquinata
+SETTINGS_WATER_POLLUTION_PENALTY_TIP Quanto l'acqua inquinata vicina (sotto il limite sopra) riduce il valore pittoresco di un sentiero. Più alto = una riva sporca è penalizzata di più.
+SETTINGS_NOISE_SENSITIVITY Penalità per il rumore
+SETTINGS_NOISE_SENSITIVITY_TIP Quanto il rumore locale riduce il valore pittoresco di un sentiero. Più alto = i sentieri rumorosi sono penalizzati di più.
+SETTINGS_LANDMARK_FORGIVENESS Tolleranza dei monumenti
+SETTINGS_LANDMARK_FORGIVENESS_TIP Un monumento vicino annulla questa parte della penalità per il rumore, così non dai peso al rumore accanto a un monumento famoso.
+SETTINGS_GROUP_POI Punti di interesse
+SETTINGS_FEATURE_RADIUS Raggio di ricerca
+SETTINGS_FEATURE_RADIUS_TIP A che distanza (metri) attorno a un sentiero cercare alberi, oggetti e monumenti.
+SETTINGS_TREE_WEIGHT Valore per albero
+SETTINGS_TREE_WEIGHT_TIP Quanto ogni albero vicino aggiunge al valore pittoresco di un sentiero.
+SETTINGS_PROP_WEIGHT Valore per oggetto
+SETTINGS_PROP_WEIGHT_TIP Quanto ogni oggetto vicino (panchina, lampione, statua...) aggiunge al valore pittoresco di un sentiero.
+SETTINGS_LANDMARK_BONUS Bonus monumento
+SETTINGS_LANDMARK_BONUS_TIP Bonus fisso quando c'è un parco o un edificio unico nelle vicinanze.
+SETTINGS_GROUP_SCORING Valore ricreativo
+SETTINGS_SMALL_PARK_RATE Valore di parco piccolo
+SETTINGS_SMALL_PARK_RATE_TIP Svago che dà un sentiero di lunghezza base, allineato a un parco piccolo. Lunghezza e scenario aumentano il valore da qui.
+SETTINGS_LENGTH_FULL Lunghezza per il valore pieno
+SETTINGS_LENGTH_FULL_TIP Lunghezza continua del sentiero (metri) che raggiunge il pieno valore di un parco piccolo. I sentieri più lunghi valgono di più, fino al limite.
+SETTINGS_MAX_MULT Valore massimo
+SETTINGS_MAX_MULT_TIP Tetto del valore ricreativo di un sentiero, come multiplo di un parco piccolo. I sentieri molto lunghi e pittoreschi non possono superarlo.
+SETTINGS_DECORATION_FULL Decorazione per valore di parco
+SETTINGS_DECORATION_FULL_TIP Quanta decorazione vicina (alberi, oggetti, un monumento) rende un sentiero da solo pari a un intero parco piccolo. Più basso = alberi e oggetti contano di più, così puoi "costruire un parco" lungo un sentiero.
+SETTINGS_INJECT_RADIUS Raggio di diffusione
+SETTINGS_INJECT_RADIUS_TIP A che distanza (metri) un punto del sentiero diffonde il suo valore ricreativo nei dintorni.
+SETTINGS_INJECT_SIGHTSEEING Aggiungi valore turistico
+SETTINGS_INJECT_SIGHTSEEING_TIP Aggiunge anche un po' di valore turistico, così i sentieri pittoreschi aiutano leggermente il turismo.
+SETTINGS_HEALTH_SHARE Bonus salute
+SETTINGS_HEALTH_SHARE_TIP Camminare fa bene: aggiunge un piccolo bonus salute locale, come frazione del valore ricreativo del sentiero. 0 lo disattiva.
+SETTINGS_APPEAL_SHARE Richiamo per i visitatori
+SETTINGS_APPEAL_SHARE_TIP Aggiunge attrattiva (richiamo turistico) all'inizio di ogni passeggiata guidata, attirando visitatori e turisti che poi la fanno. Mostrato come una forza da 0-50; circa 10 è un richiamo normale, 50 è forte. 0 lo disattiva.
+SETTINGS_GROUP_VISITS Cittadini a passeggio sui sentieri (Parklife)
+SETTINGS_ENABLE_TOURS Passeggiate guidate sui sentieri pittoreschi
+SETTINGS_ENABLE_TOURS_TIP Crea passeggiate guidate lungo i sentieri pittoreschi così i cittadini li percorrono per svago. Richiede il DLC Parklife. Le passeggiate non vengono salvate e sono rimosse in modo pulito se disattivi la mod.
+SETTINGS_TOUR_MIN_LENGTH Lunghezza minima del sentiero
+SETTINGS_TOUR_MIN_LENGTH_TIP Un sentiero deve essere lungo almeno così (metri) per avere una passeggiata; un tratto corto non vale una passeggiata.
+SETTINGS_MAX_TOURS Massimo di passeggiate
+SETTINGS_MAX_TOURS_TIP Numero massimo di linee di passeggiata attive insieme. Ognuna usa uno slot delle linee di trasporto del gioco; riducilo se hai moltissimi sentieri.
+SETTINGS_TOUR_BUDGET Frequenza delle passeggiate
+SETTINGS_TOUR_BUDGET_TIP Budget per linea di passeggiata. Più alto = il gioco avvia più gruppi, così più cittadini camminano sui sentieri.
+SETTINGS_GROUP_PERFORMANCE Prestazioni
+SETTINGS_SEGMENTS_PER_TICK Sentieri analizzati per tick
+SETTINGS_SEGMENTS_PER_TICK_TIP Quanti segmenti di sentiero vengono valutati a ogni tick di simulazione. Più basso = meno carico sulla CPU, aggiornamento più lento.
+SETTINGS_MAX_PATH_SEGMENTS Analisi massima lunghezza
+SETTINGS_MAX_PATH_SEGMENTS_TIP Quanti segmenti collegati vengono seguiti nel misurare la lunghezza di un sentiero. Più basso = meno carico sulla CPU.
+SETTINGS_GROUP_DEBUG Debug
+SETTINGS_DEBUG_LOGGING Attiva il log di debug
+SETTINGS_DEBUG_LOGGING_TIP Scrive messaggi diagnostici aggiuntivi nel log del gioco.

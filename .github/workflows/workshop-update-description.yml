@@ -1,0 +1,54 @@
+name: Update Workshop Description
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Workshop/description.txt'
+  workflow_dispatch: {}
+
+jobs:
+  update-description:
+    runs-on: ubuntu-latest
+    environment: PRO
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install steamcmd
+        run: |
+          mkdir -p "$HOME/steamcmd"
+          curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" \
+            | tar -xz -C "$HOME/steamcmd"
+          "$HOME/steamcmd/steamcmd.sh" +quit || true
+          echo "$HOME/steamcmd" >> "$GITHUB_PATH"
+
+      - name: Install Steam session
+        env:
+          STEAM_CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+        run: |
+          STEAMROOT="$HOME/Steam"
+          mkdir -p "$STEAMROOT/config"
+          echo "$STEAM_CONFIG_VDF" | base64 -d > "$STEAMROOT/config/config.vdf"
+          mkdir -p "$HOME/.steam"
+          ln -sfn "$STEAMROOT" "$HOME/.steam/steam"
+          ln -sfn "$STEAMROOT" "$HOME/.steam/root"
+
+      - name: Generate description VDF
+        env:
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+          WORKSHOP_ITEM_ID: ${{ secrets.WORKSHOP_ITEM_ID }}
+        run: |
+          python3 Workshop/generate_description_vdf.py
+
+      - name: Update Steam Workshop description
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        run: |
+          steamcmd.sh \
+            +@ShutdownOnFailedCommand 1 \
+            +login "$STEAM_USERNAME" \
+            +workshop_build_item /tmp/description.vdf \
+            +quit

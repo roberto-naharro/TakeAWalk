@@ -1,0 +1,49 @@
+name: Release Please
+
+# How this works:
+#
+#   1. Every push to main is scanned for Conventional Commits
+#      (feat:, fix:, chore:, docs:, refactor:, perf:, etc.)
+#
+#   2. Release Please opens (or updates) a "Release PR" that:
+#        - bumps the version in .release-please-manifest.json
+#        - updates CHANGELOG.md
+#        - is titled e.g. "chore(main): release 1.1.0"
+#
+#   3. Before merging the Release PR:
+#        - run ./deploy.sh --release  locally to build & stage dist/
+#        - commit dist/ to main
+#        - the Release PR will auto-update to include that commit
+#
+#   4. Merge the Release PR → Release Please creates tag vX.Y.Z
+#      → workshop-deploy.yml fires automatically and publishes to Steam Workshop
+#
+# Versioning rules (semver):
+#   feat:       → minor bump  (1.0.0 → 1.1.0)
+#   fix:        → patch bump  (1.0.0 → 1.0.1)
+#   feat!: or
+#   BREAKING CHANGE: → major bump (1.0.0 → 2.0.0)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: googleapis/release-please-action@v4.4.1
+        with:
+          # Use a PAT instead of GITHUB_TOKEN so the tag push triggers
+          # the workshop-deploy workflow. Tags pushed by GITHUB_TOKEN are
+          # intentionally blocked from triggering other workflows by GitHub.
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          config-file: .release-please-config.json
+          manifest-file: .release-please-manifest.json

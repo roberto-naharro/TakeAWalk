@@ -1,0 +1,58 @@
+MOD_DESCRIPTION Caminhos pedonais pitorescos, tranquilos e com pouca poluição ganham um pequeno valor de lazer semelhante ao de um parque e incentivam os cidadãos a sair para passear. Os pontos de interesse são árvores, adereços e monumentos próximos.
+SETTINGS_GROUP_GENERAL Geral
+SETTINGS_ENABLE Ativar o mod
+SETTINGS_ENABLE_TIP Liga ou desliga todo o mod sem o remover.
+SETTINGS_GROUP_ELIGIBILITY Quando um caminho é pitoresco
+SETTINGS_POLLUTION_THRESHOLD Poluição máxima do solo
+SETTINGS_POLLUTION_THRESHOLD_TIP Caminhos em áreas com mais poluição do solo do que isto (0-255) não dão bónus. Mais baixo = mais rigoroso, só as áreas mais limpas contam.
+SETTINGS_WATER_POLLUTION_THRESHOLD Poluição máxima da água
+SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Caminhos junto a água mais suja do que isto (0-255) não dão bónus. Caminhos secos no interior não são afetados. Mais baixo = mais rigoroso, só margens limpas contam.
+SETTINGS_WATER_POLLUTION_PENALTY Penalização por água poluída
+SETTINGS_WATER_POLLUTION_PENALTY_TIP Quanto a água poluída próxima (abaixo do limite acima) reduz o valor pitoresco de um caminho. Mais alto = uma margem suja é penalizada mais.
+SETTINGS_NOISE_SENSITIVITY Penalização por ruído
+SETTINGS_NOISE_SENSITIVITY_TIP O quanto o ruído local reduz o valor pitoresco de um caminho. Mais alto = caminhos ruidosos são mais penalizados.
+SETTINGS_LANDMARK_FORGIVENESS Tolerância de monumento
+SETTINGS_LANDMARK_FORGIVENESS_TIP Um monumento próximo cancela esta parte da penalização por ruído, por isso não se importa com o ruído ao lado de um monumento famoso.
+SETTINGS_GROUP_POI Pontos de interesse
+SETTINGS_FEATURE_RADIUS Raio de procura
+SETTINGS_FEATURE_RADIUS_TIP A que distância (metros) à volta de um caminho se procuram árvores, adereços e monumentos.
+SETTINGS_TREE_WEIGHT Valor por árvore
+SETTINGS_TREE_WEIGHT_TIP Quanto cada árvore próxima acrescenta ao valor pitoresco de um caminho.
+SETTINGS_PROP_WEIGHT Valor por adereço
+SETTINGS_PROP_WEIGHT_TIP Quanto cada adereço próximo (banco, candeeiro, estátua...) acrescenta ao valor pitoresco de um caminho.
+SETTINGS_LANDMARK_BONUS Bónus de monumento
+SETTINGS_LANDMARK_BONUS_TIP Bónus fixo quando há um parque ou edifício único por perto.
+SETTINGS_GROUP_SCORING Valor de lazer
+SETTINGS_SMALL_PARK_RATE Valor de parque pequeno
+SETTINGS_SMALL_PARK_RATE_TIP Lazer que um caminho de comprimento base dá, equiparado a um parque pequeno. O comprimento e o cenário aumentam a partir daqui.
+SETTINGS_LENGTH_FULL Comprimento para o valor total
+SETTINGS_LENGTH_FULL_TIP Comprimento contínuo do caminho (metros) que alcança o valor total de um parque pequeno. Caminhos mais longos valem mais, até ao limite.
+SETTINGS_MAX_MULT Valor máximo
+SETTINGS_MAX_MULT_TIP Limite do valor de lazer de um caminho, como múltiplo de um parque pequeno. Caminhos muito longos e pitorescos não o podem superar.
+SETTINGS_DECORATION_FULL Decoração para valor de parque
+SETTINGS_DECORATION_FULL_TIP Quanta decoração próxima (árvores, adereços, um monumento) faz um caminho valer por si só um parque pequeno inteiro. Mais baixo = árvores e adereços contam mais, por isso pode "construir um parque" ao longo de um caminho.
+SETTINGS_INJECT_RADIUS Raio de difusão
+SETTINGS_INJECT_RADIUS_TIP A que distância (metros) um ponto do caminho difunde o seu valor de lazer para os arredores.
+SETTINGS_INJECT_SIGHTSEEING Adicionar valor turístico
+SETTINGS_INJECT_SIGHTSEEING_TIP Acrescenta também um pouco de valor turístico, para que os caminhos pitorescos ajudem ligeiramente o turismo.
+SETTINGS_HEALTH_SHARE Bónus de saúde
+SETTINGS_HEALTH_SHARE_TIP Passear é saudável: acrescenta um pequeno bónus de saúde local, como uma fração do valor de lazer do caminho. 0 desativa-o.
+SETTINGS_APPEAL_SHARE Atração de visitantes
+SETTINGS_APPEAL_SHARE_TIP Acrescenta atratividade (interesse turístico) no início de cada passeio, atraindo visitantes e turistas que depois fazem o passeio. Mostrado como uma força de 0-50; cerca de 10 é um atrativo normal, 50 é forte. 0 desativa-o.
+SETTINGS_GROUP_VISITS Cidadãos a passear pelos caminhos (Parklife)
+SETTINGS_ENABLE_TOURS Passeios pelos caminhos pitorescos
+SETTINGS_ENABLE_TOURS_TIP Cria passeios ao longo dos caminhos pitorescos para os cidadãos passearem por lazer. Requer o DLC Parklife. Os passeios não são guardados e são removidos de forma limpa se desativar o mod.
+SETTINGS_TOUR_MIN_LENGTH Comprimento mínimo do caminho
+SETTINGS_TOUR_MIN_LENGTH_TIP Um caminho tem de medir pelo menos isto (metros) para ter um passeio; um troço curto não vale um passeio.
+SETTINGS_MAX_TOURS Máximo de passeios
+SETTINGS_MAX_TOURS_TIP Máximo de linhas de passeio ativas ao mesmo tempo. Cada uma usa um dos lugares de linha de transporte do jogo; reduza se tiver muitíssimos caminhos.
+SETTINGS_TOUR_BUDGET Frequência dos passeios
+SETTINGS_TOUR_BUDGET_TIP Orçamento por linha de passeio. Mais alto = o jogo gera mais grupos, por isso há mais cidadãos a passear pelos caminhos.
+SETTINGS_GROUP_PERFORMANCE Desempenho
+SETTINGS_SEGMENTS_PER_TICK Caminhos analisados por ciclo
+SETTINGS_SEGMENTS_PER_TICK_TIP Quantos segmentos de caminho são avaliados em cada ciclo de simulação. Mais baixo = menos carga de CPU, atualização mais lenta.
+SETTINGS_MAX_PATH_SEGMENTS Análise máxima de comprimento
+SETTINGS_MAX_PATH_SEGMENTS_TIP Quantos segmentos ligados são seguidos ao medir o comprimento de um caminho. Mais baixo = menos carga de CPU.
+SETTINGS_GROUP_DEBUG Depuração
+SETTINGS_DEBUG_LOGGING Ativar registo de depuração
+SETTINGS_DEBUG_LOGGING_TIP Escreve mensagens de diagnóstico adicionais no registo do jogo.

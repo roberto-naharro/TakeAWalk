@@ -1,0 +1,67 @@
+[h1]Take a Walk[/h1]
+
+In real life people go out of their way to enjoy a good walk: a long, tree-lined path along the water, a quiet promenade through the park, a stroll past a fountain. In vanilla Cities: Skylines a pedestrian path is just connective tissue: it adds nothing, and nobody walks it unless it happens to lead somewhere useful.
+
+[b]Take a Walk changes that.[/b] Scenic, quiet pedestrian paths become places worth being near [i]and[/i] places your cims actually choose to walk, even a path that leads nowhere, just for the pleasure of the walk.
+
+[h1]A walk is worth more the longer it is[/h1]
+
+Every pedestrian path (decorative paths, park paths, Plazas & Promenades) is continuously evaluated, and [b]length is the main reward[/b]. A short stub does a little; a long, winding path is a genuine destination.
+
+[list]
+[*][b]Length drives the value.[/b] Around 80 m of path is worth roughly a small park, and longer paths keep gaining, up to a few times a small park for a grand promenade. A path that's actually a walk is treated like one.
+[*][b]Scenery makes it better.[/b] Trees, benches, lamps, statues and a nearby landmark all lift the value. A bare path still counts; a beautiful one counts for much more.
+[*][b]Clean and calm.[/b] Polluted ground and filthy, contaminated water are excluded outright, and noise eats into the value, but a famous landmark forgives some of it. You don't mind the traffic next to a monument.
+[/list]
+
+This feeds the game's own [b]Entertainment[/b], land-value and tourism systems, applied continuously like a real park so the effect is visible where it should be, yet always capped below real venues, so it enhances your city without unbalancing it.
+
+[h1]Cims that actually walk your paths[/h1]
+
+This is the heart of the mod. Build a scenic path that branches off a sidewalk and winds into a quiet corner, and Take a Walk spins up a [b]native walking tour[/b] along it, so your cims [b]stroll the whole length of it[/b] for the pleasure of the walk and head back, exactly the way Parklife walking tours work, but on [i]your[/i] footpaths, chosen automatically by how scenic they are.
+
+[list]
+[*][b]The best paths win.[/b] Longer, prettier, single-entrance paths are the likeliest to get a tour; busy through-routes are left alone (cims already use those).
+[*][b]A gentle local draw.[/b] A small attractiveness boost at each tour's start pulls visitors and tourists in, kept tight and local so it never floods your map.
+[*][b]Always fresh.[/b] The set of tours re-rolls every month, and instantly whenever you build or edit a path: lay down a grand tree-lined promenade and you won't wait to see it come alive.
+[*][b]Free of charge.[/b] Walking tours created by the mod never cost your city a cent in maintenance.
+[/list]
+
+[i]Walking tours require the Parklife DLC. The leisure value works for everyone.[/i]
+
+[h1]100% save-safe: nothing is left behind[/h1]
+
+Take a Walk [b]persists absolutely nothing[/b] to your save:
+
+[list]
+[*]The leisure value is recomputed live every session, never stored.
+[*]The walking-tour lines are excluded from the save file entirely (via a Harmony patch) and removed the moment the mod is disabled.
+[*]Your map, your trees and your props are never modified.
+[/list]
+
+Add it to any city and remove it at any time: no orphans, no leftovers, no risk.
+
+[h1]Tune it your way[/h1]
+
+Everything is in the options panel and fully localized: the small-park value and the length that earns it, the cap (how many times a small park a path may reach), how much decoration is worth, ground- and water-pollution limits and penalties, noise sensitivity, landmark bonus and forgiveness, search and spread radii, a health boost along the path, the visitor-appeal strength, and the walking-tour settings (minimum length, maximum tours, frequency). Tune it subtle or turn it up for busy promenades.
+
+[h1]Compatibility[/h1]
+
+[list]
+[*]Requires [b]Harmony[/b] (auto-installed as a dependency).
+[*]Built entirely on public APIs and Harmony for maximum compatibility, so it adds to the game's existing systems rather than replacing any vanilla mechanic.
+[*]Works with custom path and park assets (it filters by type, not by asset name).
+[*]Safe to add to or remove from any save at any time.
+[/list]
+
+[h1]Languages[/h1]
+
+English, Spanish, French, German, Portuguese, Italian. More welcome via the source repository.
+
+[h1]Source code[/h1]
+
+Open source on GitHub. Issues, suggestions and translation contributions are welcome:
+[url=https://github.com/roberto-naharro/TakeAWalk]github.com/roberto-naharro/TakeAWalk[/url]
+
+[hr][/hr]
+[i]Give your footpaths a reason to exist, and your cims a reason to walk them.[/i]

@@ -1,0 +1,58 @@
+MOD_DESCRIPTION Les chemins piétons pittoresques, calmes et peu pollués gagnent une petite valeur de loisir semblable à celle d'un parc et incitent les citoyens à sortir se promener. Les points d'intérêt sont les arbres, les accessoires et les monuments proches.
+SETTINGS_GROUP_GENERAL Général
+SETTINGS_ENABLE Activer le mod
+SETTINGS_ENABLE_TIP Active ou désactive tout le mod sans le retirer.
+SETTINGS_GROUP_ELIGIBILITY Quand un chemin est pittoresque
+SETTINGS_POLLUTION_THRESHOLD Pollution du sol maximale
+SETTINGS_POLLUTION_THRESHOLD_TIP Les chemins dans les zones plus polluées que cette valeur (0-255) ne donnent aucun bonus. Plus bas = plus strict, seules les zones les plus propres comptent.
+SETTINGS_WATER_POLLUTION_THRESHOLD Pollution de l'eau maximale
+SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Les chemins longeant une eau plus sale que cela (0-255) ne donnent aucun bonus. Les chemins secs à l'intérieur des terres ne sont pas affectés. Plus bas = plus strict, seules les rives propres comptent.
+SETTINGS_WATER_POLLUTION_PENALTY Pénalité de pollution de l'eau
+SETTINGS_WATER_POLLUTION_PENALTY_TIP À quel point l'eau polluée proche (sous la limite ci-dessus) réduit la valeur pittoresque d'un chemin. Plus élevé = une rive sale est davantage pénalisée.
+SETTINGS_NOISE_SENSITIVITY Pénalité de bruit
+SETTINGS_NOISE_SENSITIVITY_TIP À quel point le bruit local réduit la valeur pittoresque d'un chemin. Plus élevé = les chemins bruyants sont plus pénalisés.
+SETTINGS_LANDMARK_FORGIVENESS Tolérance des monuments
+SETTINGS_LANDMARK_FORGIVENESS_TIP Un monument proche annule cette part de la pénalité de bruit, car on ne remarque pas le bruit près d'un monument célèbre.
+SETTINGS_GROUP_POI Points d'intérêt
+SETTINGS_FEATURE_RADIUS Rayon de recherche
+SETTINGS_FEATURE_RADIUS_TIP À quelle distance (mètres) autour d'un chemin chercher arbres, accessoires et monuments.
+SETTINGS_TREE_WEIGHT Valeur par arbre
+SETTINGS_TREE_WEIGHT_TIP Combien chaque arbre proche ajoute à la valeur pittoresque d'un chemin.
+SETTINGS_PROP_WEIGHT Valeur par accessoire
+SETTINGS_PROP_WEIGHT_TIP Combien chaque accessoire proche (banc, lampadaire, statue...) ajoute à la valeur pittoresque d'un chemin.
+SETTINGS_LANDMARK_BONUS Bonus de monument
+SETTINGS_LANDMARK_BONUS_TIP Bonus fixe lorsqu'un parc ou un bâtiment unique est à proximité.
+SETTINGS_GROUP_SCORING Valeur de loisir
+SETTINGS_SMALL_PARK_RATE Valeur de petit parc
+SETTINGS_SMALL_PARK_RATE_TIP Loisir qu'apporte un chemin de longueur de base, aligné sur un petit parc. La longueur et le décor augmentent à partir de là.
+SETTINGS_LENGTH_FULL Longueur pour la valeur maximale
+SETTINGS_LENGTH_FULL_TIP Longueur continue du chemin (mètres) qui atteint la pleine valeur d'un petit parc. Les chemins plus longs valent plus, jusqu'au plafond.
+SETTINGS_MAX_MULT Valeur maximale
+SETTINGS_MAX_MULT_TIP Plafond de la valeur de loisir d'un chemin, en multiple d'un petit parc. Les chemins très longs et pittoresques ne peuvent pas le dépasser.
+SETTINGS_DECORATION_FULL Décoration pour valeur de parc
+SETTINGS_DECORATION_FULL_TIP À quel point la décoration proche (arbres, accessoires, un monument) suffit à elle seule à valoir un petit parc entier. Plus bas = les arbres et accessoires comptent plus, vous pouvez ainsi "bâtir un parc" le long d'un chemin.
+SETTINGS_INJECT_RADIUS Rayon de diffusion
+SETTINGS_INJECT_RADIUS_TIP À quelle distance (mètres) un point du chemin diffuse sa valeur de loisir aux alentours.
+SETTINGS_INJECT_SIGHTSEEING Ajouter une valeur touristique
+SETTINGS_INJECT_SIGHTSEEING_TIP Ajoute aussi un peu de valeur touristique, pour que les chemins pittoresques aident légèrement le tourisme.
+SETTINGS_HEALTH_SHARE Bonus de santé
+SETTINGS_HEALTH_SHARE_TIP Marcher est bon pour la santé : ajoute un petit bonus de santé local, en fraction de la valeur de loisir du chemin. 0 le désactive.
+SETTINGS_APPEAL_SHARE Attrait pour les visiteurs
+SETTINGS_APPEAL_SHARE_TIP Ajoute de l'attrait (intérêt touristique) au début de chaque promenade guidée, attirant visiteurs et touristes qui font ensuite la promenade. Affiché comme une force de 0-50 ; environ 10 est un attrait normal, 50 est fort. 0 le désactive.
+SETTINGS_GROUP_VISITS Citoyens se promenant sur les chemins (Parklife)
+SETTINGS_ENABLE_TOURS Promenades guidées sur les chemins pittoresques
+SETTINGS_ENABLE_TOURS_TIP Crée des promenades guidées le long des chemins pittoresques pour que les citoyens s'y promènent par loisir. Nécessite le DLC Parklife. Les promenades ne sont pas sauvegardées et sont retirées proprement si vous désactivez le mod.
+SETTINGS_TOUR_MIN_LENGTH Longueur minimale du chemin
+SETTINGS_TOUR_MIN_LENGTH_TIP Un chemin doit mesurer au moins cela (mètres) pour avoir une promenade guidée : un court tronçon ne vaut pas une promenade.
+SETTINGS_MAX_TOURS Maximum de promenades guidées
+SETTINGS_MAX_TOURS_TIP Nombre maximal de lignes de promenade actives à la fois. Chacune occupe un emplacement de ligne de transport du jeu ; réduisez-le si vous avez de très nombreux chemins.
+SETTINGS_TOUR_BUDGET Fréquence des promenades
+SETTINGS_TOUR_BUDGET_TIP Budget par ligne de promenade. Plus élevé = le jeu lance plus de groupes, donc plus de citoyens marchent sur les chemins.
+SETTINGS_GROUP_PERFORMANCE Performance
+SETTINGS_SEGMENTS_PER_TICK Chemins analysés par cycle
+SETTINGS_SEGMENTS_PER_TICK_TIP Combien de segments de chemin sont évalués à chaque cycle de simulation. Plus bas = moins de charge CPU, mise à jour plus lente.
+SETTINGS_MAX_PATH_SEGMENTS Analyse maximale de longueur
+SETTINGS_MAX_PATH_SEGMENTS_TIP Combien de segments connectés sont suivis pour mesurer la longueur d'un chemin. Plus bas = moins de charge CPU.
+SETTINGS_GROUP_DEBUG Débogage
+SETTINGS_DEBUG_LOGGING Activer la journalisation de débogage
+SETTINGS_DEBUG_LOGGING_TIP Écrit des messages de diagnostic supplémentaires dans le journal du jeu.

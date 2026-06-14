@@ -1,0 +1,58 @@
+MOD_DESCRIPTION Los caminos peatonales pintorescos, tranquilos y con poca contaminación ganan un pequeño valor de ocio similar al de un parque y animan a los ciudadanos a salir a pasear. Los puntos de interés son árboles, accesorios y monumentos cercanos.
+SETTINGS_GROUP_GENERAL General
+SETTINGS_ENABLE Activar el mod
+SETTINGS_ENABLE_TIP Activa o desactiva todo el mod sin necesidad de quitarlo.
+SETTINGS_GROUP_ELIGIBILITY Cuándo un camino es pintoresco
+SETTINGS_POLLUTION_THRESHOLD Contaminación máxima del suelo
+SETTINGS_POLLUTION_THRESHOLD_TIP Los caminos en zonas con más contaminación del suelo que esta (0-255) no dan ninguna bonificación. Más bajo = más estricto, solo las zonas más limpias cuentan.
+SETTINGS_WATER_POLLUTION_THRESHOLD Contaminación máxima del agua
+SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Los caminos junto a agua más sucia que esto (0-255) no dan bonificación. Los caminos interiores secos no se ven afectados. Más bajo = más estricto, solo orillas limpias cuentan.
+SETTINGS_WATER_POLLUTION_PENALTY Penalización por agua contaminada
+SETTINGS_WATER_POLLUTION_PENALTY_TIP Cuánto reduce el valor pintoresco el agua contaminada cercana (por debajo del límite anterior). Más alto = una orilla sucia se penaliza más.
+SETTINGS_NOISE_SENSITIVITY Penalización por ruido
+SETTINGS_NOISE_SENSITIVITY_TIP Cuánto reduce el ruido local el valor pintoresco de un camino. Más alto = los caminos ruidosos se penalizan más.
+SETTINGS_LANDMARK_FORGIVENESS Indulgencia por monumento
+SETTINGS_LANDMARK_FORGIVENESS_TIP Un monumento cercano cancela esta parte de la penalización por ruido: no te molesta el ruido junto a un monumento famoso.
+SETTINGS_GROUP_POI Puntos de interés
+SETTINGS_FEATURE_RADIUS Radio de búsqueda
+SETTINGS_FEATURE_RADIUS_TIP A qué distancia (metros) alrededor de un camino se buscan árboles, accesorios y monumentos.
+SETTINGS_TREE_WEIGHT Valor por árbol
+SETTINGS_TREE_WEIGHT_TIP Cuánto añade cada árbol cercano al valor pintoresco de un camino.
+SETTINGS_PROP_WEIGHT Valor por accesorio
+SETTINGS_PROP_WEIGHT_TIP Cuánto añade cada accesorio cercano (banco, farola, estatua...) al valor pintoresco de un camino.
+SETTINGS_LANDMARK_BONUS Bonificación por monumento
+SETTINGS_LANDMARK_BONUS_TIP Bonificación fija cuando hay un parque o edificio único cerca.
+SETTINGS_GROUP_SCORING Valor de ocio
+SETTINGS_SMALL_PARK_RATE Valor de parque pequeño
+SETTINGS_SMALL_PARK_RATE_TIP Ocio que aporta un camino de longitud base, equiparado a un parque pequeño. La longitud y el paisaje aumentan a partir de aquí.
+SETTINGS_LENGTH_FULL Longitud para el valor completo
+SETTINGS_LENGTH_FULL_TIP Longitud continua del camino (metros) que alcanza el valor completo de un parque pequeño. Los caminos más largos valen más, hasta el límite.
+SETTINGS_MAX_MULT Valor máximo
+SETTINGS_MAX_MULT_TIP Tope del valor de ocio de un camino, como múltiplo de un parque pequeño. Los caminos muy largos y pintorescos no pueden superarlo.
+SETTINGS_DECORATION_FULL Decoración para valor de parque
+SETTINGS_DECORATION_FULL_TIP Cuánta decoración cercana (árboles, accesorios, un monumento) hace que un camino valga por sí solo un parque pequeño entero. Más bajo = los árboles y accesorios cuentan más, así puedes "construir un parque" a lo largo de un camino.
+SETTINGS_INJECT_RADIUS Radio de difusión
+SETTINGS_INJECT_RADIUS_TIP A qué distancia (metros) un punto del camino difunde su valor de ocio al entorno.
+SETTINGS_INJECT_SIGHTSEEING Añadir valor turístico
+SETTINGS_INJECT_SIGHTSEEING_TIP Añade también un poco de valor turístico, para que los caminos pintorescos ayuden levemente al turismo.
+SETTINGS_HEALTH_SHARE Mejora de salud
+SETTINGS_HEALTH_SHARE_TIP Pasear es saludable: añade una pequeña mejora de salud local, como una fracción del valor de ocio del camino. 0 lo desactiva.
+SETTINGS_APPEAL_SHARE Atractivo para visitantes
+SETTINGS_APPEAL_SHARE_TIP Añade atractivo (interés turístico) al inicio de cada paseo guiado, atrayendo visitantes y turistas que luego hacen el paseo. Se muestra como una fuerza de 0-50; alrededor de 10 es un atractivo normal, 50 es fuerte. 0 lo desactiva.
+SETTINGS_GROUP_VISITS Ciudadanos paseando por los caminos (Parklife)
+SETTINGS_ENABLE_TOURS Paseos guiados por los caminos pintorescos
+SETTINGS_ENABLE_TOURS_TIP Crea paseos guiados a lo largo de los caminos pintorescos para que los ciudadanos paseen por ocio. Requiere el DLC Parklife. Los paseos no se guardan y se eliminan limpiamente si desactivas el mod.
+SETTINGS_TOUR_MIN_LENGTH Longitud mínima del camino
+SETTINGS_TOUR_MIN_LENGTH_TIP Un camino debe medir al menos esto (metros) para tener un paseo guiado: un tramo corto no merece un paseo.
+SETTINGS_MAX_TOURS Máximo de paseos guiados
+SETTINGS_MAX_TOURS_TIP Máximo de líneas de paseo activas a la vez. Cada una usa una de las plazas de líneas de transporte del juego; redúcelo si tienes muchísimos caminos.
+SETTINGS_TOUR_BUDGET Frecuencia de paseos
+SETTINGS_TOUR_BUDGET_TIP Presupuesto por línea de paseo. Más alto = el juego genera más grupos de paseo, así hay más ciudadanos paseando por los caminos.
+SETTINGS_GROUP_PERFORMANCE Rendimiento
+SETTINGS_SEGMENTS_PER_TICK Caminos analizados por ciclo
+SETTINGS_SEGMENTS_PER_TICK_TIP Cuántos segmentos de camino se evalúan en cada ciclo de simulación. Más bajo = menos carga de CPU, actualización más lenta.
+SETTINGS_MAX_PATH_SEGMENTS Análisis máximo de longitud
+SETTINGS_MAX_PATH_SEGMENTS_TIP Cuántos segmentos conectados se siguen al medir la longitud de un camino. Más bajo = menos carga de CPU.
+SETTINGS_GROUP_DEBUG Depuración
+SETTINGS_DEBUG_LOGGING Activar registro de depuración
+SETTINGS_DEBUG_LOGGING_TIP Escribe mensajes de diagnóstico adicionales en el registro del juego.

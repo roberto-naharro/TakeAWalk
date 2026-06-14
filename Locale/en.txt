@@ -1,0 +1,58 @@
+MOD_DESCRIPTION Scenic, quiet, low-pollution pedestrian paths gain a small park-like leisure value and tempt cims out for a walk. Points of interest are trees, props and nearby landmarks.
+SETTINGS_GROUP_GENERAL General
+SETTINGS_ENABLE Enable mod
+SETTINGS_ENABLE_TIP Turn the whole mod on or off without removing it.
+SETTINGS_GROUP_ELIGIBILITY Where paths count as scenic
+SETTINGS_POLLUTION_THRESHOLD Max ground pollution
+SETTINGS_POLLUTION_THRESHOLD_TIP Paths in areas with more ground pollution than this (0-255) give no bonus. Lower = stricter, only the cleanest areas qualify.
+SETTINGS_WATER_POLLUTION_THRESHOLD Max water pollution
+SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Paths beside water dirtier than this (0-255) give no bonus. Dry inland paths are unaffected. Lower = stricter, only clean shores qualify.
+SETTINGS_WATER_POLLUTION_PENALTY Water pollution penalty
+SETTINGS_WATER_POLLUTION_PENALTY_TIP How strongly nearby polluted water (below the limit above) reduces a path's scenic value. Higher = a dirty shoreline is penalised more.
+SETTINGS_NOISE_SENSITIVITY Noise penalty
+SETTINGS_NOISE_SENSITIVITY_TIP How strongly local noise reduces a path's scenic value. Higher = noisy paths are penalised more.
+SETTINGS_LANDMARK_FORGIVENESS Landmark noise forgiveness
+SETTINGS_LANDMARK_FORGIVENESS_TIP A nearby landmark cancels this much of the noise penalty, so you don't mind the noise next to a famous monument.
+SETTINGS_GROUP_POI Points of interest
+SETTINGS_FEATURE_RADIUS Search radius
+SETTINGS_FEATURE_RADIUS_TIP How far (metres) around a path to look for trees, props and landmarks.
+SETTINGS_TREE_WEIGHT Value per tree
+SETTINGS_TREE_WEIGHT_TIP How much each nearby tree adds to a path's scenic value.
+SETTINGS_PROP_WEIGHT Value per prop
+SETTINGS_PROP_WEIGHT_TIP How much each nearby prop (bench, lamp, statue...) adds to a path's scenic value.
+SETTINGS_LANDMARK_BONUS Landmark bonus
+SETTINGS_LANDMARK_BONUS_TIP Flat bonus when a park or unique building is nearby.
+SETTINGS_GROUP_SCORING Leisure value
+SETTINGS_SMALL_PARK_RATE Small-park value
+SETTINGS_SMALL_PARK_RATE_TIP Entertainment a baseline-length path gives, matched to a small park. Length and scenery scale up from here.
+SETTINGS_LENGTH_FULL Length for full value
+SETTINGS_LENGTH_FULL_TIP Contiguous path length (metres) that earns the full small-park value. Longer paths are worth more, up to the cap.
+SETTINGS_MAX_MULT Maximum value
+SETTINGS_MAX_MULT_TIP Ceiling on a path's leisure value, as a multiple of a small park. Very long, scenic paths cannot exceed this.
+SETTINGS_DECORATION_FULL Decoration for park value
+SETTINGS_DECORATION_FULL_TIP How much nearby decoration (trees, props, a landmark) makes a path worth a whole small park on its own. Lower = trees and props count for more, so you can "build a park" along a path.
+SETTINGS_INJECT_RADIUS Spread radius
+SETTINGS_INJECT_RADIUS_TIP How far (metres) a path point spreads its leisure value into the surroundings.
+SETTINGS_INJECT_SIGHTSEEING Add sightseeing value
+SETTINGS_INJECT_SIGHTSEEING_TIP Also add a little sightseeing/tour value, so scenic paths help tourism slightly.
+SETTINGS_HEALTH_SHARE Health boost
+SETTINGS_HEALTH_SHARE_TIP Walking is healthy: add a small local health boost, set as a fraction of the path's leisure value. 0 turns it off.
+SETTINGS_APPEAL_SHARE Visitor appeal
+SETTINGS_APPEAL_SHARE_TIP Adds attractiveness (tourism appeal) at each walking tour's start, drawing visitors and tourists who then take the tour. Shown as a 0-50 strength; around 10 is a normal draw, 50 is strong. 0 turns it off.
+SETTINGS_GROUP_VISITS Cims walking the paths (Parklife)
+SETTINGS_ENABLE_TOURS Walking tours on scenic paths
+SETTINGS_ENABLE_TOURS_TIP Creates walking tours along scenic paths so cims stroll them for leisure. Requires the Parklife DLC. The tours are not saved and are removed cleanly if you disable the mod.
+SETTINGS_TOUR_MIN_LENGTH Minimum path length
+SETTINGS_TOUR_MIN_LENGTH_TIP A path must be at least this long (metres) to get a walking tour; a short stub is not worth a walk.
+SETTINGS_MAX_TOURS Maximum walking tours
+SETTINGS_MAX_TOURS_TIP Most walking-tour lines alive at once. Each uses one of the game's transport-line slots; lower if you have very many paths.
+SETTINGS_TOUR_BUDGET Tour frequency
+SETTINGS_TOUR_BUDGET_TIP Budget per tour line. Higher = the game runs more walking groups, so more cims are out walking the paths.
+SETTINGS_GROUP_PERFORMANCE Performance
+SETTINGS_SEGMENTS_PER_TICK Paths scanned per tick
+SETTINGS_SEGMENTS_PER_TICK_TIP How many path segments are evaluated each simulation tick. Lower = lighter on the CPU, slower to update.
+SETTINGS_MAX_PATH_SEGMENTS Max path length scan
+SETTINGS_MAX_PATH_SEGMENTS_TIP How many connected segments are followed when measuring a path's length. Lower = lighter on the CPU.
+SETTINGS_GROUP_DEBUG Debug
+SETTINGS_DEBUG_LOGGING Enable debug logging
+SETTINGS_DEBUG_LOGGING_TIP Write extra diagnostic messages to the game log.

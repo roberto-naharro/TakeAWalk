@@ -9,6 +9,8 @@ SETTINGS_WATER_POLLUTION_THRESHOLD Max water pollution
 SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Paths beside water dirtier than this (0-255) give no bonus. Dry inland paths are unaffected. Lower = stricter, only clean shores qualify.
 SETTINGS_WATER_POLLUTION_PENALTY Water pollution penalty
 SETTINGS_WATER_POLLUTION_PENALTY_TIP How strongly nearby polluted water (below the limit above) reduces a path's scenic value. Higher = a dirty shoreline is penalised more.
+SETTINGS_WATER_CHECK_RADIUS Water check radius
+SETTINGS_WATER_CHECK_RADIUS_TIP How far (metres) around a path to look for dirty or sewage water. Larger catches water further from the path; smaller only checks water right next to it.
 SETTINGS_NOISE_SENSITIVITY Noise penalty
 SETTINGS_NOISE_SENSITIVITY_TIP How strongly local noise reduces a path's scenic value. Higher = noisy paths are penalised more.
 SETTINGS_LANDMARK_FORGIVENESS Landmark noise forgiveness

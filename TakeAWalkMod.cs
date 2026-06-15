@@ -62,6 +62,8 @@ namespace TakeAWalk
                 v => v.ToString("F0"), v => { s.WaterPollutionThreshold = (int)v; Settings.Save(); });
             AddSlider(elig, "SETTINGS_WATER_POLLUTION_PENALTY", 0f, 2f, 0.1f, s.WaterPollutionSensitivity,
                 v => v.ToString("F1"), v => { s.WaterPollutionSensitivity = v; Settings.Save(); });
+            AddSlider(elig, "SETTINGS_WATER_CHECK_RADIUS", 16f, 192f, 8f, s.WaterCheckRadius,
+                v => v.ToString("F0") + " m", v => { s.WaterCheckRadius = v; Settings.Save(); });
             AddSlider(elig, "SETTINGS_NOISE_SENSITIVITY", 0f, 1f, 0.05f, s.NoiseSensitivity,
                 v => v.ToString("F2"), v => { s.NoiseSensitivity = v; Settings.Save(); });
             AddSlider(elig, "SETTINGS_LANDMARK_FORGIVENESS", 0f, 2f, 0.1f, s.LandmarkNoiseForgiveness,

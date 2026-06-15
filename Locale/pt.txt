@@ -9,6 +9,8 @@ SETTINGS_WATER_POLLUTION_THRESHOLD Poluição máxima da água
 SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Caminhos junto a água mais suja do que isto (0-255) não dão bónus. Caminhos secos no interior não são afetados. Mais baixo = mais rigoroso, só margens limpas contam.
 SETTINGS_WATER_POLLUTION_PENALTY Penalização por água poluída
 SETTINGS_WATER_POLLUTION_PENALTY_TIP Quanto a água poluída próxima (abaixo do limite acima) reduz o valor pitoresco de um caminho. Mais alto = uma margem suja é penalizada mais.
+SETTINGS_WATER_CHECK_RADIUS Raio de verificação de água
+SETTINGS_WATER_CHECK_RADIUS_TIP A que distância (metros) à volta de um caminho se procura água suja ou esgotos. Maior deteta água mais afastada; menor só verifica a água mesmo ao lado.
 SETTINGS_NOISE_SENSITIVITY Penalização por ruído
 SETTINGS_NOISE_SENSITIVITY_TIP O quanto o ruído local reduz o valor pitoresco de um caminho. Mais alto = caminhos ruidosos são mais penalizados.
 SETTINGS_LANDMARK_FORGIVENESS Tolerância de monumento

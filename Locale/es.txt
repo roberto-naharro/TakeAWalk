@@ -9,6 +9,8 @@ SETTINGS_WATER_POLLUTION_THRESHOLD Contaminación máxima del agua
 SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Los caminos junto a agua más sucia que esto (0-255) no dan bonificación. Los caminos interiores secos no se ven afectados. Más bajo = más estricto, solo orillas limpias cuentan.
 SETTINGS_WATER_POLLUTION_PENALTY Penalización por agua contaminada
 SETTINGS_WATER_POLLUTION_PENALTY_TIP Cuánto reduce el valor pintoresco el agua contaminada cercana (por debajo del límite anterior). Más alto = una orilla sucia se penaliza más.
+SETTINGS_WATER_CHECK_RADIUS Radio de comprobación de agua
+SETTINGS_WATER_CHECK_RADIUS_TIP A qué distancia (metros) alrededor de un camino se busca agua sucia o con aguas residuales. Más grande detecta agua más lejana; más pequeño solo comprueba el agua justo al lado.
 SETTINGS_NOISE_SENSITIVITY Penalización por ruido
 SETTINGS_NOISE_SENSITIVITY_TIP Cuánto reduce el ruido local el valor pintoresco de un camino. Más alto = los caminos ruidosos se penalizan más.
 SETTINGS_LANDMARK_FORGIVENESS Indulgencia por monumento

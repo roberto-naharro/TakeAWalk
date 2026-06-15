@@ -9,6 +9,8 @@ SETTINGS_WATER_POLLUTION_THRESHOLD Inquinamento dell'acqua massimo
 SETTINGS_WATER_POLLUTION_THRESHOLD_TIP I sentieri lungo acqua più sporca di così (0-255) non danno bonus. I sentieri asciutti nell'entroterra non sono influenzati. Più basso = più severo, contano solo le rive pulite.
 SETTINGS_WATER_POLLUTION_PENALTY Penalità per acqua inquinata
 SETTINGS_WATER_POLLUTION_PENALTY_TIP Quanto l'acqua inquinata vicina (sotto il limite sopra) riduce il valore pittoresco di un sentiero. Più alto = una riva sporca è penalizzata di più.
+SETTINGS_WATER_CHECK_RADIUS Raggio di controllo dell'acqua
+SETTINGS_WATER_CHECK_RADIUS_TIP A che distanza (metri) attorno a un sentiero cercare acqua sporca o fognaria. Più grande rileva l'acqua più lontana; più piccolo controlla solo l'acqua proprio accanto.
 SETTINGS_NOISE_SENSITIVITY Penalità per il rumore
 SETTINGS_NOISE_SENSITIVITY_TIP Quanto il rumore locale riduce il valore pittoresco di un sentiero. Più alto = i sentieri rumorosi sono penalizzati di più.
 SETTINGS_LANDMARK_FORGIVENESS Tolleranza dei monumenti

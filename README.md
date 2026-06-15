@@ -68,6 +68,7 @@ All values are exposed in the options panel, fully localized:
 | Eligibility | Max ground pollution | Above this (0-255), a path gives no bonus |
 | Eligibility | Max water pollution | Above this (0-255), a path beside dirty water gives no bonus (dry inland paths unaffected) |
 | Eligibility | Water pollution penalty | How strongly nearby polluted water (below the limit) erodes the scenic value |
+| Eligibility | Water check radius | How far around a path to scan for dirty/sewage water |
 | Eligibility | Noise penalty / Landmark forgiveness | How much noise costs, and how much a landmark forgives |
 | Points of interest | Search radius | How far around a path to look for trees/props/landmarks |
 | Points of interest | Value per tree / prop / landmark | Weight of each feature in the quality score |

@@ -49,7 +49,7 @@ namespace TakeAWalk
 
             // Gate - a path hugging filthy, contaminated water is not a pleasant stroll. Sample the
             // water pollution around the point; dry inland paths (no water nearby) read 0 and pass.
-            int waterPollution = SampleWaterPollution(pos, s.FeatureRadius);
+            int waterPollution = SampleWaterPollution(pos, s.WaterCheckRadius);
             if (waterPollution > s.WaterPollutionThreshold)
                 return result;   // Eligible stays false → skipped
 
@@ -219,27 +219,35 @@ namespace TakeAWalk
             return false;
         }
 
-        // Worst water pollution (0-255) found in the water around pos. Samples the point and four
-        // offsets at the search radius so a path running *alongside* water still detects it. Cells
-        // with no water contribute nothing, so a dry inland path returns 0.
+        // The water grid uses ~38 m cells, so we step a little tighter than that.
+        private const float WaterSampleStep = 32f;
+
+        // Worst water pollution (0-255) found in the water *around* pos. The path itself sits on land
+        // (its own cell usually reads no water), so we scan a grid of points spanning ±radius rather
+        // than trusting the single path point - that is how a path running alongside a dirty shore or
+        // a sewage outflow is detected. Sewage water counts as fully polluted even before its
+        // pollution byte ramps up. A dry inland path finds no water cells and returns 0.
         private static int SampleWaterPollution(Vector3 pos, float radius)
         {
             WaterManager wm = Singleton<WaterManager>.instance;
             int worst = 0;
-            worst = MaxWaterPollutionAt(wm, pos, worst);
-            worst = MaxWaterPollutionAt(wm, new Vector3(pos.x + radius, pos.y, pos.z), worst);
-            worst = MaxWaterPollutionAt(wm, new Vector3(pos.x - radius, pos.y, pos.z), worst);
-            worst = MaxWaterPollutionAt(wm, new Vector3(pos.x, pos.y, pos.z + radius), worst);
-            worst = MaxWaterPollutionAt(wm, new Vector3(pos.x, pos.y, pos.z - radius), worst);
-            return worst;
-        }
-
-        private static int MaxWaterPollutionAt(WaterManager wm, Vector3 p, int worst)
-        {
-            bool water, sewage;
-            byte pollution;
-            wm.CheckWater(p, out water, out sewage, out pollution);
-            if (water && pollution > worst) return pollution;
+            for (float dz = -radius; dz <= radius; dz += WaterSampleStep)
+            {
+                for (float dx = -radius; dx <= radius; dx += WaterSampleStep)
+                {
+                    bool water, sewage;
+                    byte pollution;
+                    wm.CheckWater(new Vector3(pos.x + dx, pos.y, pos.z + dz),
+                        out water, out sewage, out pollution);
+                    if (!water && !sewage) continue;
+                    int p = sewage ? 255 : pollution;   // sewage water is dirty by definition
+                    if (p > worst)
+                    {
+                        worst = p;
+                        if (worst >= 255) return 255;   // can't get worse
+                    }
+                }
+            }
             return worst;
         }
 

@@ -9,6 +9,8 @@ SETTINGS_WATER_POLLUTION_THRESHOLD Maximale Wasserverschmutzung
 SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Wege an Wasser, das schmutziger ist als dies (0-255), geben keinen Bonus. Trockene Wege im Landesinneren sind nicht betroffen. Niedriger = strenger, nur saubere Ufer zählen.
 SETTINGS_WATER_POLLUTION_PENALTY Strafe für Wasserverschmutzung
 SETTINGS_WATER_POLLUTION_PENALTY_TIP Wie stark nahes verschmutztes Wasser (unter dem obigen Grenzwert) den malerischen Wert eines Weges mindert. Höher = ein schmutziges Ufer wird stärker bestraft.
+SETTINGS_WATER_CHECK_RADIUS Wasser-Prüfradius
+SETTINGS_WATER_CHECK_RADIUS_TIP Wie weit (Meter) rund um einen Weg nach schmutzigem oder Abwasser gesucht wird. Größer erfasst weiter entferntes Wasser; kleiner prüft nur das Wasser direkt daneben.
 SETTINGS_NOISE_SENSITIVITY Lärmstrafe
 SETTINGS_NOISE_SENSITIVITY_TIP Wie stark lokaler Lärm den malerischen Wert eines Weges mindert. Höher = laute Wege werden stärker bestraft.
 SETTINGS_LANDMARK_FORGIVENESS Wahrzeichen-Nachsicht

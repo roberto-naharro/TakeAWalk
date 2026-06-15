@@ -9,6 +9,8 @@ SETTINGS_WATER_POLLUTION_THRESHOLD Pollution de l'eau maximale
 SETTINGS_WATER_POLLUTION_THRESHOLD_TIP Les chemins longeant une eau plus sale que cela (0-255) ne donnent aucun bonus. Les chemins secs à l'intérieur des terres ne sont pas affectés. Plus bas = plus strict, seules les rives propres comptent.
 SETTINGS_WATER_POLLUTION_PENALTY Pénalité de pollution de l'eau
 SETTINGS_WATER_POLLUTION_PENALTY_TIP À quel point l'eau polluée proche (sous la limite ci-dessus) réduit la valeur pittoresque d'un chemin. Plus élevé = une rive sale est davantage pénalisée.
+SETTINGS_WATER_CHECK_RADIUS Rayon de vérification de l'eau
+SETTINGS_WATER_CHECK_RADIUS_TIP À quelle distance (mètres) autour d'un chemin chercher de l'eau sale ou des eaux usées. Plus grand détecte l'eau plus éloignée ; plus petit ne vérifie que l'eau juste à côté.
 SETTINGS_NOISE_SENSITIVITY Pénalité de bruit
 SETTINGS_NOISE_SENSITIVITY_TIP À quel point le bruit local réduit la valeur pittoresque d'un chemin. Plus élevé = les chemins bruyants sont plus pénalisés.
 SETTINGS_LANDMARK_FORGIVENESS Tolérance des monuments

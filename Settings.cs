@@ -25,6 +25,9 @@ namespace TakeAWalk
         // How strongly nearby water pollution eats into the scenic score (per pollution unit), for
         // water below the hard threshold. Kept high on purpose - polluted water is a strong deterrent.
         public float WaterPollutionSensitivity = 0.5f;
+        // Radius (metres) scanned around a path point for dirty/sewage water. The path itself sits on
+        // land, so this looks outward at nearby water; larger = catches water further from the path.
+        public float WaterCheckRadius = 64f;
         // How strongly local noise pollution eats into the scenic score (per noise unit).
         public float NoiseSensitivity = 0.15f;
         // Fraction of a nearby landmark's bonus that is allowed to cancel the noise

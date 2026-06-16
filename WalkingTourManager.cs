@@ -429,20 +429,35 @@ namespace TakeAWalk
         {
             if (_infoSearched) return _info;
             _infoSearched = true;
+
+            // Pick the GENUINE walking-tour prefab: Pedestrian transport AND the PublicTransportTours
+            // sub-service. Line-manager mods (e.g. Transport Lines Manager) classify every line by
+            // {transportType, subService, vehicleType, level}; a Pedestrian line whose sub-service is
+            // NOT PublicTransportTours has no matching descriptor there, and their patched
+            // TransportLine.SimulationStep then throws a NullReferenceException every tick. We
+            // therefore use ONLY the real tour prefab, so our lines are indistinguishable from vanilla
+            // Parklife walking tours. If it is absent (it shouldn't be when Parklife is owned), Half 2
+            // stays off rather than create a line that clashes with those mods.
             int n = PrefabCollection<TransportInfo>.LoadedCount();
             for (uint i = 0; i < n; i++)
             {
                 TransportInfo info = PrefabCollection<TransportInfo>.GetLoaded(i);
-                if (info != null && info.m_transportType == TransportInfo.TransportType.Pedestrian)
+                if (info != null &&
+                    info.m_transportType == TransportInfo.TransportType.Pedestrian &&
+                    info.m_class != null &&
+                    info.m_class.m_subService == ItemClass.SubService.PublicTransportTours)
                 {
                     _info = info;
                     break;
                 }
             }
+
             if (_info == null)
-                Log.Warning("Walking-tour TransportInfo (Pedestrian) not found - Half 2 disabled.");
+                Log.Warning("Walking-tour prefab (Pedestrian + PublicTransportTours) not found - " +
+                            "Half 2 disabled.");
             else
-                Log.Info("Walking-tour TransportInfo: " + _info.name);
+                Log.Info("Walking-tour TransportInfo: " + _info.name + " (subService " +
+                         _info.m_class.m_subService + ", level " + _info.GetClassLevel() + ")");
             return _info;
         }
     }

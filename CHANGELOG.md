@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3](https://github.com/roberto-naharro/TakeAWalk/compare/v1.0.2...v1.0.3) (2026-06-18)
+
+
+### Bug Fixes
+
+* add cleanup for stale walking-tour lines on level load to prevent crashes ([ec9b2b0](https://github.com/roberto-naharro/TakeAWalk/commit/ec9b2b045b0e091499b780301a24a041de73fb12))
+* add error handling to prevent crashes in TourMaintenancePatch and ScenicPathScanner ([d10b486](https://github.com/roberto-naharro/TakeAWalk/commit/d10b486ec2c948dae05abed93b273f55fb1613a3))
+* improve comments for clarity in TourMaintenancePatch and TourLineLoadCleanup ([8c1449d](https://github.com/roberto-naharro/TakeAWalk/commit/8c1449d3c529a309bee880464a8962ae07383c2c))
+
 ## [1.0.2](https://github.com/roberto-naharro/TakeAWalk/compare/v1.0.1...v1.0.2) (2026-06-16)
 
 

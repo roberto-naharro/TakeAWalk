@@ -403,6 +403,49 @@ namespace TakeAWalk
             catch { }
         }
 
+        // Purge stale walking-tour lines left in a loaded save by an older/buggy build. Our
+        // save-exclusion (HideForSave) is registry-scoped, so a tour line that isn't in _byTip at
+        // serialize time (an orphan, or one made by a pre-fix build) gets written into the save and,
+        // on load, is processed by every TransportLine.SimulationStep patch before we re-register it.
+        //
+        // The base game only ever creates Pedestrian transport lines as PublicTransportTours walking
+        // tours, so a Pedestrian line with any OTHER sub-service can only be a TakeAWalk artifact from
+        // a build that used the wrong prefab. Such a line has no descriptor in line-manager mods
+        // (TLM / IPT), whose patched SimulationStep then throws a NullReferenceException on it every
+        // tick - an unhandled simulation-thread exception, which CS1 cannot unwind, so it dies
+        // natively at the first sim step after load. We remove those here, before simulation starts.
+        //
+        // The player's genuine Parklife walking tours and our current correct lines (both
+        // PublicTransportTours) are left untouched. Called from TourLineLoadCleanup at level-load on
+        // the main thread, while simulation is paused.
+        internal static void ReleaseStrayTourLines()
+        {
+            if (!Singleton<TransportManager>.exists) return;
+            TransportManager tm = Singleton<TransportManager>.instance;
+            TransportLine[] buf = tm.m_lines.m_buffer;
+            int removed = 0;
+            int n = (int)tm.m_lines.m_size;
+            for (int i = 1; i < n; i++)
+            {
+                if ((buf[i].m_flags & TransportLine.Flags.Created) == TransportLine.Flags.None) continue;
+                TransportInfo info = buf[i].Info;
+                if (info == null || info.m_transportType != TransportInfo.TransportType.Pedestrian) continue;
+                if (info.m_class != null &&
+                    info.m_class.m_subService == ItemClass.SubService.PublicTransportTours) continue;
+
+                try { tm.ReleaseLine((ushort)i); removed++; }
+                catch (System.Exception e)
+                {
+                    Log.Warning("ReleaseStrayTourLines: could not release line " + i + ": " + e);
+                }
+            }
+            if (removed > 0)
+                Log.Info("Removed " + removed + " stale walking-tour line(s) from the loaded save " +
+                         "(wrong-prefab artifacts from an older build).");
+            else
+                Log.DebugLog("ReleaseStrayTourLines: no stale tour lines found in the save.");
+        }
+
         // ── Save exclusion (called by the Harmony patch bracketing Data.Serialize) ────────────
         internal static void HideForSave()
         {

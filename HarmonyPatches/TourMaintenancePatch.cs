@@ -26,27 +26,40 @@ namespace TakeAWalk.HarmonyPatches
         // unhandled simulation-thread exception crash CS1 natively - without spamming every tick.
         private static bool _errorLogged;
 
-        private static void Prefix(ushort lineID, out Swap __state)
+        // Returns false to skip the original (transpiled) SimulationStep for a stale wrong-prefab
+        // tour line, true otherwise.
+        private static bool Prefix(ushort lineID, out Swap __state)
         {
             __state = default(Swap);
             try
             {
-                if (!WalkingTourManager.IsTourLine(lineID))
-                    return;
-
                 TransportInfo info = Singleton<TransportManager>.instance.m_lines.m_buffer[lineID].Info;
-                if (info == null)
-                    return;
+
+                // Belt-and-suspenders: a Pedestrian line whose sub-service is NOT PublicTransportTours
+                // is a stale wrong-prefab artifact (see WalkingTourManager.ReleaseStrayTourLines). The
+                // load-time sweep should have removed it; if one slips through, skip its whole step so
+                // no other mod's patched body (e.g. TLM's transpiler) can NRE on it. This only helps
+                // when our prefix runs before that mod's patch, so the load sweep stays the real fix.
+                if (info != null &&
+                    info.m_transportType == TransportInfo.TransportType.Pedestrian &&
+                    (info.m_class == null ||
+                     info.m_class.m_subService != ItemClass.SubService.PublicTransportTours))
+                    return false;
+
+                if (info == null || !WalkingTourManager.IsTourLine(lineID))
+                    return true;
 
                 __state.Info = info;
                 __state.PerVehicle = info.m_maintenanceCostPerVehicle;
                 __state.PerPassenger = info.m_maintenanceCostPerPassenger;
                 info.m_maintenanceCostPerVehicle = 0;
                 info.m_maintenanceCostPerPassenger = 0f;
+                return true;
             }
             catch (System.Exception e)
             {
                 if (!_errorLogged) { _errorLogged = true; Log.Error("TourMaintenancePatch.Prefix threw: " + e); }
+                return true;
             }
         }
 

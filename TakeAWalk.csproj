@@ -73,6 +73,7 @@
     <Compile Include="HarmonyPatches\TransportLineSerializePatch.cs" />
     <Compile Include="HarmonyPatches\TourMaintenancePatch.cs" />
     <Compile Include="ScenicPathScanner.cs" />
+    <Compile Include="TourLineLoadCleanup.cs" />
     <Compile Include="TakeAWalkMod.cs" />
   </ItemGroup>
   <ItemGroup>

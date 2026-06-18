@@ -1,5 +1,6 @@
 using ColossalFramework;
 using HarmonyLib;
+using TakeAWalk.Util;
 
 namespace TakeAWalk.HarmonyPatches
 {
@@ -21,29 +22,47 @@ namespace TakeAWalk.HarmonyPatches
             public float PerPassenger;
         }
 
+        // Set once when a patch body first throws, so we log a managed stack instead of letting an
+        // unhandled simulation-thread exception crash CS1 natively - without spamming every tick.
+        private static bool _errorLogged;
+
         private static void Prefix(ushort lineID, out Swap __state)
         {
             __state = default(Swap);
-            if (!WalkingTourManager.IsTourLine(lineID))
-                return;
+            try
+            {
+                if (!WalkingTourManager.IsTourLine(lineID))
+                    return;
 
-            TransportInfo info = Singleton<TransportManager>.instance.m_lines.m_buffer[lineID].Info;
-            if (info == null)
-                return;
+                TransportInfo info = Singleton<TransportManager>.instance.m_lines.m_buffer[lineID].Info;
+                if (info == null)
+                    return;
 
-            __state.Info = info;
-            __state.PerVehicle = info.m_maintenanceCostPerVehicle;
-            __state.PerPassenger = info.m_maintenanceCostPerPassenger;
-            info.m_maintenanceCostPerVehicle = 0;
-            info.m_maintenanceCostPerPassenger = 0f;
+                __state.Info = info;
+                __state.PerVehicle = info.m_maintenanceCostPerVehicle;
+                __state.PerPassenger = info.m_maintenanceCostPerPassenger;
+                info.m_maintenanceCostPerVehicle = 0;
+                info.m_maintenanceCostPerPassenger = 0f;
+            }
+            catch (System.Exception e)
+            {
+                if (!_errorLogged) { _errorLogged = true; Log.Error("TourMaintenancePatch.Prefix threw: " + e); }
+            }
         }
 
         private static void Postfix(Swap __state)
         {
-            if (__state.Info == null)
-                return;
-            __state.Info.m_maintenanceCostPerVehicle = __state.PerVehicle;
-            __state.Info.m_maintenanceCostPerPassenger = __state.PerPassenger;
+            try
+            {
+                if (__state.Info == null)
+                    return;
+                __state.Info.m_maintenanceCostPerVehicle = __state.PerVehicle;
+                __state.Info.m_maintenanceCostPerPassenger = __state.PerPassenger;
+            }
+            catch (System.Exception e)
+            {
+                if (!_errorLogged) { _errorLogged = true; Log.Error("TourMaintenancePatch.Postfix threw: " + e); }
+            }
         }
     }
 }

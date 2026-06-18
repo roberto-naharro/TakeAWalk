@@ -51,6 +51,12 @@ namespace TakeAWalk
         private static bool _rejSampleLogged;
         private static bool _announcedLive;
 
+        // Set once each when a sim-thread entry point first throws, so we log a real managed stack
+        // (instead of CS1 dying natively on an unhandled simulation-thread exception) without
+        // spamming the log every tick afterwards.
+        private static bool _tickErrorLogged;
+        private static bool _updateErrorLogged;
+
         public override void OnCreated(IThreading threading)
         {
             base.OnCreated(threading);
@@ -72,10 +78,37 @@ namespace TakeAWalk
         // Per-frame (even while paused): commit freshly built walking-tour line paths.
         public override void OnUpdate(float realTimeDelta, float simulationTimeDelta)
         {
-            WalkingTourManager.Tick();
+            try
+            {
+                WalkingTourManager.Tick();
+            }
+            catch (System.Exception e)
+            {
+                if (!_updateErrorLogged)
+                {
+                    _updateErrorLogged = true;
+                    Log.Error("OnUpdate/Tick threw (suppressing further reports): " + e);
+                }
+            }
         }
 
         public override void OnAfterSimulationTick()
+        {
+            try
+            {
+                DoSimulationTick();
+            }
+            catch (System.Exception e)
+            {
+                if (!_tickErrorLogged)
+                {
+                    _tickErrorLogged = true;
+                    Log.Error("OnAfterSimulationTick threw (suppressing further reports): " + e);
+                }
+            }
+        }
+
+        private static void DoSimulationTick()
         {
             Settings s = Settings.Instance;
             if (!s.Enabled) { if (_cache.Count > 0) _cache.Clear(); return; }

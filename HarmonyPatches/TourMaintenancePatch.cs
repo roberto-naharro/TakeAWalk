@@ -23,7 +23,7 @@ namespace TakeAWalk.HarmonyPatches
         }
 
         // Set once when a patch body first throws, so we log a managed stack instead of letting an
-        // unhandled simulation-thread exception crash CS1 natively - without spamming every tick.
+        // unhandled simulation-thread exception crash CS1 natively, without spamming every tick.
         private static bool _errorLogged;
 
         // Returns false to skip the original (transpiled) SimulationStep for a stale wrong-prefab

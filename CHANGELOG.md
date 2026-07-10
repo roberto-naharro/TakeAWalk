@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/roberto-naharro/TakeAWalk/compare/v1.0.3...v1.0.4) (2026-07-10)
+
+
+### Bug Fixes
+
+* enhance IsPedestrianPath logic to filter non-pedestrian paths and improve performance ([e352195](https://github.com/roberto-naharro/TakeAWalk/commit/e352195f1feb23ceba3b5231029c61fff9fcd732))
+
 ## [1.0.3](https://github.com/roberto-naharro/TakeAWalk/compare/v1.0.2...v1.0.3) (2026-06-18)
 
 

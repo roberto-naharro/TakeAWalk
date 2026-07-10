@@ -293,10 +293,25 @@ namespace TakeAWalk
 
         // A walkable pedestrian path. Beautification covers decorative pedestrian paths,
         // park paths, and Plazas & Promenades park paths. (Roads are excluded by design.)
+        // True only for nets a cim can actually stroll: real pedestrian/park/decorative paths.
+        // The Beautification service is a catch-all that ALSO covers fences, retaining walls, flood
+        // walls, quays and canals, so filtering on service alone pulls all of those in (huge segment
+        // counts + bogus walking tours = severe lag). Two extra gates fix that:
+        //   • m_hasPedestrianLanes: excludes fences, walls and canals, which have no walkable lane.
+        //   • exclude QuayAI: a quay has a walkable top (so it passes the lane test) but is waterfront
+        //     infrastructure, not a scenic park path. Canal/wall AIs are already handled by the lane
+        //     test but are listed too, as belt-and-suspenders against odd assets.
         internal static bool IsPedestrianPath(NetInfo info)
         {
-            return info != null && info.m_class != null &&
-                   info.m_class.m_service == ItemClass.Service.Beautification;
+            if (info == null || info.m_class == null) return false;
+            if (info.m_class.m_service != ItemClass.Service.Beautification) return false;
+            if (!info.m_hasPedestrianLanes) return false;
+
+            NetAI ai = info.m_netAI;
+            if (ai is QuayAI || ai is CanalAI || ai is FloodWallAI || ai is DecorationWallAI)
+                return false;
+
+            return true;
         }
 
         // A leaf: a node with exactly one pedestrian-path segment (a path endpoint).

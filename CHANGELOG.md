@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/roberto-naharro/TakeAWalk/compare/v1.0.4...v1.1.0) (2026-07-20)
+
+
+### Features
+
+* add optional integration with Improved Public Transport to suppress auto-show for walking tour lines ([ced0660](https://github.com/roberto-naharro/TakeAWalk/commit/ced066030adfb42cd53f4b84f8d661307d5d0d50))
+
 ## [1.0.4](https://github.com/roberto-naharro/TakeAWalk/compare/v1.0.3...v1.0.4) (2026-07-10)
 
 

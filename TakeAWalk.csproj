@@ -70,6 +70,7 @@
     <Compile Include="ScenicScore.cs" />
     <Compile Include="PathMetrics.cs" />
     <Compile Include="WalkingTourManager.cs" />
+    <Compile Include="IptCompat.cs" />
     <Compile Include="HarmonyPatches\TransportLineSerializePatch.cs" />
     <Compile Include="HarmonyPatches\TourMaintenancePatch.cs" />
     <Compile Include="ScenicPathScanner.cs" />

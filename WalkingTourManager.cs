@@ -295,6 +295,10 @@ namespace TakeAWalk
             Randomizer r = Singleton<SimulationManager>.instance.m_randomizer;
             if (!tm.CreateLine(out line, ref r, info, true)) return false;
 
+            // Tell IPT (if installed) this line is ours, so its LineWatcher does not auto-open the
+            // line info panel or apply its per-line defaults to our transient tour. No-op otherwise.
+            IptCompat.NotifyLineCreated(line);
+
             // Fund the line so it actually spawns walking groups (budget 0 = no groups). Higher
             // budget = more/larger groups = more cims out walking (tunable).
             int budget = Settings.Instance.TourBudget;

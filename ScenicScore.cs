@@ -35,6 +35,13 @@ namespace TakeAWalk
         private const float PropCell = 64f;
         private const int BuildingRes = 270;
         private const float BuildingCell = 64f;
+        // Tree/prop instances store position packed as int16 over the 17 280 m world (17280/65536).
+        // We unpack it directly instead of calling TreeInstance/PropInstance.Position, because those
+        // properties read Singleton<ToolManager>.instance.m_properties.m_mode (to switch to the asset
+        // editor's finer scale), and that tool state can be null on the simulation thread where this
+        // scan runs, throwing a NullReferenceException. This constant is the in-game / map-editor
+        // scale (the asset-editor scale never applies to a live city).
+        private const float PackedPosScale = 0.263671875f;
 
         internal static ScenicResult Evaluate(Vector3 pos)
         {
@@ -112,7 +119,8 @@ namespace TakeAWalk
                         if ((buffer[id].m_flags & (ushort)TreeInstance.Flags.Created) != 0 &&
                             (buffer[id].m_flags & (ushort)TreeInstance.Flags.Deleted) == 0)
                         {
-                            if (SqrDistXZ(buffer[id].Position, pos) <= r2)
+                            if (SqrDistXZ(buffer[id].m_posX * PackedPosScale,
+                                          buffer[id].m_posZ * PackedPosScale, pos) <= r2)
                             {
                                 if (++count >= cap) return count;
                             }
@@ -148,7 +156,8 @@ namespace TakeAWalk
                         if ((buffer[id].m_flags & (ushort)PropInstance.Flags.Created) != 0 &&
                             (buffer[id].m_flags & (ushort)PropInstance.Flags.Deleted) == 0)
                         {
-                            if (SqrDistXZ(buffer[id].Position, pos) <= r2)
+                            if (SqrDistXZ(buffer[id].m_posX * PackedPosScale,
+                                          buffer[id].m_posZ * PackedPosScale, pos) <= r2)
                             {
                                 if (++count >= cap) return count;
                             }
@@ -255,6 +264,14 @@ namespace TakeAWalk
         {
             float dx = a.x - b.x;
             float dz = a.z - b.z;
+            return dx * dx + dz * dz;
+        }
+
+        // Overload for an already-unpacked XZ position (tree/prop packed coords), avoiding a Vector3.
+        private static float SqrDistXZ(float ax, float az, Vector3 b)
+        {
+            float dx = ax - b.x;
+            float dz = az - b.z;
             return dx * dx + dz * dz;
         }
 

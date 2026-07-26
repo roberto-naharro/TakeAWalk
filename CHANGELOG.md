@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/roberto-naharro/TakeAWalk/compare/v1.1.0...v1.1.1) (2026-07-26)
+
+
+### Bug Fixes
+
+* prevent NullReferenceException by unpacking tree/prop positions directly ([46423eb](https://github.com/roberto-naharro/TakeAWalk/commit/46423eb1a5c7c15b74c6351a696b3c566fe6b9a3))
+
 ## [1.1.0](https://github.com/roberto-naharro/TakeAWalk/compare/v1.0.4...v1.1.0) (2026-07-20)
 
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using TakeAWalk.Util;
 
@@ -13,12 +14,19 @@ namespace TakeAWalk
     // IPT exposes LineWatcher.MarkKnown(lineId), which marks a line as already discovered so the
     // watcher skips both the panel and the defaults. We call it right after creating a tour line, via
     // reflection so IPT stays an OPTIONAL dependency: everything no-ops cleanly when IPT is not
-    // installed, or on an older IPT that lacks the method. Resolved once and cached.
+    // installed. Resolved once and cached.
+    //
+    // The original Improved Public Transport 2 (and IPT3) have the same auto-show but no MarkKnown.
+    // For those we fall back to adding the line id straight into the watcher's private
+    // HashSet<ushort> _knownLines, which is exactly what MarkKnown does. We do it right after
+    // CreateLine, before the line is Complete: the watcher only ever Adds lines that are Complete,
+    // so it is not mutating the set for this line while we write to it.
     internal static class IptCompat
     {
         private static bool _resolved;
         private static FieldInfo _instanceField;   // LineWatcher.instance (public static)
         private static MethodInfo _markKnown;      // LineWatcher.MarkKnown(ushort)
+        private static FieldInfo _knownLinesField; // fallback: LineWatcher._knownLines (private)
 
         // Tell IPT (if present) that this freshly created line is already known, so it does not
         // auto-show its info panel or overwrite our line with IPT's defaults. Safe no-op otherwise.
@@ -27,10 +35,21 @@ namespace TakeAWalk
             try
             {
                 if (!_resolved) Resolve();
-                if (_markKnown == null || _instanceField == null) return;
+                if (_instanceField == null) return;
                 object watcher = _instanceField.GetValue(null);
                 if (watcher == null) return;   // IPT loaded but its watcher not up yet
-                _markKnown.Invoke(watcher, new object[] { lineId });
+
+                if (_markKnown != null)
+                {
+                    _markKnown.Invoke(watcher, new object[] { lineId });
+                    return;
+                }
+
+                HashSet<ushort> known = _knownLinesField != null
+                    ? _knownLinesField.GetValue(watcher) as HashSet<ushort>
+                    : null;
+                if (known != null)
+                    lock (known) known.Add(lineId);
             }
             catch (Exception e)
             {
@@ -56,12 +75,16 @@ namespace TakeAWalk
             _instanceField = lw.GetField("instance", BindingFlags.Public | BindingFlags.Static);
             _markKnown = lw.GetMethod("MarkKnown", BindingFlags.Public | BindingFlags.Instance,
                 null, new[] { typeof(ushort) }, null);
+            if (_markKnown == null)
+                _knownLinesField = lw.GetField("_knownLines", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            if (_instanceField == null || _markKnown == null)
-                Log.Warning("IPT LineWatcher found but MarkKnown/instance is missing (older IPT?); " +
+            if (_instanceField == null || (_markKnown == null && _knownLinesField == null))
+                Log.Warning("IPT LineWatcher found but no way to mark lines as known; " +
                             "its auto-show cannot be suppressed for walking tours.");
             else
-                Log.Info("IPT detected; walking tours will suppress its auto-show line panel.");
+                Log.Info("IPT detected (" + lw.FullName + ", " +
+                         (_markKnown != null ? "MarkKnown" : "known-lines fallback") +
+                         "); walking tours will not trigger its auto-show line panel.");
         }
 
         private static Type FindType(string fullName)

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/roberto-naharro/TakeAWalk/compare/v1.1.1...v1.1.2) (2026-09-19)
+
+
+### Bug Fixes
+
+* improve IPT integration by adding fallback for marking known lines ([a951180](https://github.com/roberto-naharro/TakeAWalk/commit/a95118070cb4c2837942292c58b1d808a752f7f0))
+
 ## [1.1.1](https://github.com/roberto-naharro/TakeAWalk/compare/v1.1.0...v1.1.1) (2026-07-26)
 
 
